@@ -4,7 +4,8 @@ export const Row = styled.div`
     margin-top: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 1rem;
 `
 
 export const Column = styled.div`

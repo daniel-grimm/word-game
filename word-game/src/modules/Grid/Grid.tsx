@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Error, Form, Guess, Submit, UserInput } from "./Grid.style";
 import Array from "../Array/Array";
+import { words } from "../../../resources/words"
 
 export const Grid: React.FC = () => {
   const [error, setError] = useState(false);
   const [guess, setGuess] = useState("");
+  const [answer, setAnswer] = useState("")
+  const [attempts, setAttempts] = useState(0)
+  const [guessArr, setGuessArr] = useState<Array<string>>([])
+  
+  useEffect(() => {
+    setAnswer(words[Math.floor(Math.random() * 496)])
+  }, [])
 
-  function checkGuess() {
-    console.log("checked guess")
-  }
-
-  function validateInput() {
+  function handleInput() {
     if (guess.length != 5) {
       setError(true);
     } else {
-      checkGuess();
+      const newVal: Array<string> = [...guessArr, guess]
+      setGuessArr(newVal)
       setError(false);
+      setAttempts(attempts + 1)
     }
     setGuess("")
   }
@@ -29,7 +35,7 @@ export const Grid: React.FC = () => {
 
   return (
     <>
-      <Array />
+      <Array solution={answer} guessArr={guessArr} />
       <UserInput>
         <Form>
           <Guess
@@ -38,7 +44,7 @@ export const Grid: React.FC = () => {
             onChange={() => setGuessText(event)}
             placeholder="Enter your guess here"
           />
-          <Submit onClick={() => validateInput()}>Submit</Submit>
+          <Submit disabled={attempts > 5} onClick={() => handleInput()}>Submit</Submit>
         </Form>
         {error && <Error>Please enter a 5 word answer</Error>}
       </UserInput>
