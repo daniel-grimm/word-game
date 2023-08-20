@@ -1,10 +1,17 @@
-import './App.css'
+import { Box, MainLayout } from "./App.style"
+import Grid from "./modules/Grid/Grid"
+import Header from "./modules/Header/Header"
 
-function App() {
+export const App: React.FC = () => {
 
   return (
     <>
-      <p>Hi</p>
+      <MainLayout>
+        <Header />
+        <Box>
+          <Grid />
+        </Box>
+      </MainLayout>
     </>
   )
 }

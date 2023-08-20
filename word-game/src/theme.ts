@@ -1,4 +1,5 @@
 export enum theme {
+    headerFont = "Tilt Prism",
     sansSerifFontFamily = "Nunito Sans",
 
     orange = "BD5F20",
