@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Error, Form, Guess, Submit, UserInput } from "./Grid.style";
+import Array from "../Array/Array";
 
 export const Grid: React.FC = () => {
   const [error, setError] = useState(false);
@@ -28,7 +29,7 @@ export const Grid: React.FC = () => {
 
   return (
     <>
-      <p>Grid</p>
+      <Array />
       <UserInput>
         <Form>
           <Guess

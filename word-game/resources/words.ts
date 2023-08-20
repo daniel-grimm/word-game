@@ -496,3 +496,5 @@ export enum words {
     write,
     wrong,
 }
+
+export default words
