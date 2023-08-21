@@ -16,7 +16,8 @@ export const Answer: React.FC<GuessCheck> = ({ answer, guess, index }) => {
   if (guess && answer[index].toLowerCase() === guess[index].toLowerCase()) {
     color = theme.blue;
   }
-  if (guess && answer[index].toLowerCase() !== guess[index].toLowerCase() && answer.indexOf(guess[index]) > 0) {
+
+  if (guess && answer[index].toLowerCase() !== guess[index].toLowerCase() && answer.toLowerCase().indexOf(guess[index].toLowerCase()) >= 0) {
     color = theme.orange;
   }
 
