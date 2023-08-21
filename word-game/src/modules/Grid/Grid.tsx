@@ -9,10 +9,13 @@ export const Grid: React.FC = () => {
   const [answer, setAnswer] = useState("")
   const [attempts, setAttempts] = useState(0)
   const [guessArr, setGuessArr] = useState<Array<string>>([])
+  const [success, setSuccess] = useState(false)
   
   useEffect(() => {
     setAnswer(words[Math.floor(Math.random() * 496)])
   }, [])
+
+  console.log(answer)
 
   function handleInput() {
     if (guess.length != 5) {
@@ -22,15 +25,35 @@ export const Grid: React.FC = () => {
       setGuessArr(newVal)
       setError(false);
       setAttempts(attempts + 1)
+      if (guess.toLowerCase() === answer.toLowerCase())
+      {
+        setSuccess(true)
+      }
     }
     setGuess("")
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function setGuessText(e: any) {
-    const newGuess = guess + e?.data;
-    setGuess(newGuess);
-    setError(false);
+    let newGuess = ""
+    if (e.data != null)
+    {
+        newGuess = guess + e?.data;
+    }
+    else
+    {
+        if (guess.length > 1)
+        {
+            newGuess = guess.substring(0, guess.length - 1);
+        }
+        else
+        {
+            newGuess = ""
+        }
+    }
+    setGuess(newGuess)
+    setError(false)
+    setSuccess(false)
   }
 
   return (
@@ -47,6 +70,7 @@ export const Grid: React.FC = () => {
           <Submit disabled={attempts > 5} onClick={() => handleInput()}>Submit</Submit>
         </Form>
         {error && <Error>Please enter a 5 word answer</Error>}
+        {success && <Error>You win!</Error>}
       </UserInput>
     </>
   );
