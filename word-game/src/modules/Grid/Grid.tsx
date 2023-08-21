@@ -15,6 +15,7 @@ export const Grid: React.FC = () => {
     setAnswer(words[Math.floor(Math.random() * 496)])
   }, [])
 
+  console.log(guess, attempts)
   console.log(answer)
 
   function handleInput() {
@@ -56,6 +57,15 @@ export const Grid: React.FC = () => {
     setSuccess(false)
   }
 
+  function restart() {
+    setGuess("")
+    setError(false)
+    setSuccess(false)
+    setAttempts(0)
+    setAnswer(words[Math.floor(Math.random() * 496)])
+    setGuessArr([])
+  }
+
   return (
     <>
       <Array solution={answer} guessArr={guessArr} />
@@ -68,6 +78,7 @@ export const Grid: React.FC = () => {
             placeholder="Enter your guess here"
           />
           <Submit disabled={attempts > 5} onClick={() => handleInput()}>Submit</Submit>
+          <Submit onClick={() => restart()}>Play Again</Submit>
         </Form>
         {error && <Error>Please enter a 5 word answer</Error>}
         {success && <Error>You win!</Error>}
