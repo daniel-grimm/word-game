@@ -15,9 +15,6 @@ export const Grid: React.FC = () => {
     setAnswer(words[Math.floor(Math.random() * 496)])
   }, [])
 
-  console.log(guess, attempts)
-  console.log(answer)
-
   function handleInput() {
     if (guess.length != 5) {
       setError(true);
