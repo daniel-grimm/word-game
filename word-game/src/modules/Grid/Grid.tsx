@@ -79,6 +79,7 @@ export const Grid: React.FC = () => {
         </Form>
         {error && <Error>Please enter a 5 word answer</Error>}
         {success && <Error>You win!</Error>}
+        {attempts > 5 && <Error>Answer was {answer}</Error>}
       </UserInput>
     </>
   );
