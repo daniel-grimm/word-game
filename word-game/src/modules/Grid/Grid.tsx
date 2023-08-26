@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Error, Form, Guess, Submit, UserInput } from "./Grid.style";
+import { Error, Form, Guess, Submit, UserInput, PlayAgain } from "./Grid.style";
 import Array from "../Array/Array";
 import { words } from "../../../resources/words"
 
@@ -75,7 +75,7 @@ export const Grid: React.FC = () => {
             placeholder="Enter your guess here"
           />
           <Submit disabled={attempts > 5} onClick={() => handleInput()}>Submit</Submit>
-          <Submit onClick={() => restart()}>Play Again</Submit>
+          <PlayAgain onClick={() => restart()}>Play Again</PlayAgain>
         </Form>
         {error && <Error>Please enter a 5 word answer</Error>}
         {success && <Error>You win!</Error>}

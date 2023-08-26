@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { theme } from '../../theme'
 
 export const UserInput = styled.div`
     display: flex;
@@ -7,7 +8,19 @@ export const UserInput = styled.div`
 
 export const Guess = styled.input``
 
-export const Submit = styled.button``
+export const Submit = styled.button`
+    border: none;
+    border-radius: 10px;
+    background-color: ${theme.green}
+
+`
+
+export const PlayAgain = styled.button`
+    border: none;
+    border-radius: 10px;
+    background-color: ${theme.purple}
+
+`
 
 export const Form = styled.div`
     margin-top: 1rem;
@@ -15,6 +28,7 @@ export const Form = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 2px;
 `
 
 export const Error = styled.div`
